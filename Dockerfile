@@ -42,7 +42,7 @@ RUN chmod 600 ~/.vnc/passwd
 RUN /bin/bash -c "echo -e '#!/bin/bash' >>  ~/startup.sh"
 RUN /bin/bash -c "echo -e 'rm -rf /tmp/.*' >>  ~/startup.sh"
 RUN /bin/bash -c "echo -e 'rm -r /tmp/*' >>  ~/startup.sh"
-RUN /bin/bash -c "echo -e '/usr/bin/vncserver -fg -geometry 1920x1080 &' >>  ~/startup.sh"
+RUN /bin/bash -c "echo -e '/usr/bin/vncserver -fg -geometry 1920x1080' >>  ~/startup.sh"
 RUN cp /root/startup.sh /etc/init.d/startup.sh
 RUN chmod +x /etc/init.d/startup.sh
 RUN update-rc.d startup.sh defaults 100
