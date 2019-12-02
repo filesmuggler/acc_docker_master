@@ -4,6 +4,7 @@ MAINTAINER "krzysztof.stezala@student.put.poznan.pl"
 LABEL version="1.0"
 
 ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update
 RUN apt-get install xfce4 -y
 RUN apt-get install xfce4-goodies -y
@@ -18,6 +19,7 @@ RUN apt-get install ros-melodic-desktop-full -y
 RUN rosdep init
 RUN rosdep update 
 
+ENV PATH=/opt/ros/melodic/bin:$PATH
 # Creating ROS_WS
 RUN mkdir -p ~/ros_ws/src
 
