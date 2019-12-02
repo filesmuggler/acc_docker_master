@@ -38,7 +38,13 @@ RUN mkdir ~/.vnc
 RUN echo "123456" | vncpasswd -f >> ~/.vnc/passwd
 RUN chmod 600 ~/.vnc/passwd
 
-# Create startup script
+# Ros startup script
+RUN /bin/bash -c "echo -e '#!/bin/bash' >> ~/ros_start.sh"
+RUN /bin/bash -c "echo -e '/opt/ros/melodic/bin/roscore &' >> ~/ros_start.sh"
+RUN /bin/bash -c "echo -e 'source /opt/ros/melodic/setup.bash &' >> ~/ros_start.sh"
+RUN /bin/bash -c "echo -e '/opt/ros/melodic/bin/roslaunch rosbridge_server rosbridge_websocket.launch' >> ~/ros_start.sh"
+
+# VNC startup script
 RUN /bin/bash -c "echo -e '#!/bin/bash' >>  ~/startup.sh"
 RUN /bin/bash -c "echo -e 'rm -rf /tmp/.*' >>  ~/startup.sh"
 RUN /bin/bash -c "echo -e 'rm -r /tmp/*' >>  ~/startup.sh"
