@@ -40,9 +40,7 @@ RUN chmod 600 ~/.vnc/passwd
 
 # Ros startup script
 RUN /bin/bash -c "echo -e '#!/bin/bash' >> ~/ros_start.sh"
-RUN /bin/bash -c "echo -e '/opt/ros/melodic/bin/roscore &' >> ~/ros_start.sh"
-RUN /bin/bash -c "echo -e 'source /opt/ros/melodic/setup.bash &' >> ~/ros_start.sh"
-RUN /bin/bash -c "echo -e '/opt/ros/melodic/bin/roslaunch rosbridge_server rosbridge_websocket.launch' >> ~/ros_start.sh"
+RUN /bin/bash -c "echo -e '/opt/ros/melodic/bin/roscore & source /opt/ros/melodic/setup.bash & /opt/ros/melodic/bin/roslaunch rosbridge_server rosbridge_websocket.launch' >> ~/ros_start.sh"
 
 # VNC startup script
 RUN /bin/bash -c "echo -e '#!/bin/bash' >>  ~/startup.sh"
