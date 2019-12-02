@@ -39,7 +39,6 @@ RUN echo "123456" | vncpasswd -f >> ~/.vnc/passwd
 RUN chmod 600 ~/.vnc/passwd
 
 # Create startup script
-RUN mkdir ~/startup
 RUN /bin/bash -c "echo -e '#!/bin/bash' >>  ~/startup.sh"
 RUN /bin/bash -c "echo -e 'rm -rf /tmp/.*' >>  ~/startup.sh"
 RUN /bin/bash -c "echo -e 'rm -r /tmp/*' >>  ~/startup.sh"
