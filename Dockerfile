@@ -42,6 +42,7 @@ RUN chmod 600 ~/.vnc/passwd
 
 # Ros startup script
 RUN /bin/bash -c "echo -e '#!/bin/bash' >> ~/ros_start.sh"
+RUN /bin/bash -c "echo -e 'source /opt/ros/melodic/setup.bash' >> ~/ros_start.sh"
 RUN /bin/bash -c "echo -e '/opt/ros/melodic/bin/roscore' >> ~/ros_start.sh"
 RUN chmod +x ~/ros_start.sh
 
@@ -55,7 +56,7 @@ RUN /bin/bash -c "echo -e '#!/bin/bash' >>  ~/startup.sh"
 RUN /bin/bash -c "echo -e 'rm -rf /tmp/.*' >>  ~/startup.sh"
 RUN /bin/bash -c "echo -e 'rm -r /tmp/*' >>  ~/startup.sh"
 RUN /bin/bash -c "echo -e '/usr/bin/vncserver -fg -geometry 1920x1080' >>  ~/startup.sh"
-RUN /bin/bash -c "echo -e 'roscore' >>  ~/startup.sh"
+RUN /bin/bash -c "echo -e './ros_start.sh' >>  ~/startup.sh"
 RUN cp /root/startup.sh /etc/init.d/startup.sh
 RUN chmod +x /etc/init.d/startup.sh
 RUN update-rc.d startup.sh defaults 100
